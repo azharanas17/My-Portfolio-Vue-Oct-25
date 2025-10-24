@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import Hero from './components/Hero.vue'
+import { useScrollSpy } from './composables/useScrollSpy';
+import Navigation from './components/Navigation.vue';
+import Hero from './components/Hero.vue';
 import Feature from './components/Feature.vue';
 import CTA from './components/CTA.vue';
 import Content from './components/Content.vue';
@@ -11,31 +13,39 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 import 'animate.css'
+
+// Define section IDs for scroll spy
+const sectionIds = ['hero', 'projects', 'skills', 'contact'];
+const { currentSection } = useScrollSpy(sectionIds);
 </script>
 
 <template>
+  <Navigation :current-section="currentSection" />
 
-  <Hero></Hero>
-  <Feature></Feature>
-  <CTA></CTA>
-  <Content></Content>
-  <Team></Team>
-  <Logo></Logo>
-  <Contact></Contact>
+  <section id="hero">
+    <Hero></Hero>
+  </section>
+  
+  <section id="skills">
+    <Feature></Feature>
+  </section>
+  
+  <section id="projects">
+    <Content></Content>
+  </section>
+  
+  <section id="contact">
+    <Contact></Contact>
+  </section>
 
-  <div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-    <Card class="w-[350px] p-6">
-      <CardHeader>
-        <CardTitle>shadcn-vue + Tailwind + Vite 🚀</CardTitle>
-      </CardHeader>
-      <CardContent class="space-y-4">
-        <p class="text-sm text-muted-foreground">
-          Everything is working perfectly.
-        </p>
-        <Button class="animate__animated animate__bounce">Click Me</Button>
-      </CardContent>
-    </Card>
-  </div>
+  <!-- Footer -->
+  <footer class="py-8 bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-gray-600 dark:text-gray-400">
+        © {{ new Date().getFullYear() }} My Portfolio. All rights reserved.
+      </p>
+    </div>
+  </footer>
 
 </template>
 

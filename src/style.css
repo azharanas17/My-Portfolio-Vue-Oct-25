@@ -2,6 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom responsive utilities for portfolio */
+.portfolio-container {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Responsive breakpoints based on requirements */
+/* Mobile first approach */
+.section-padding {
+  @apply py-12 sm:py-16 md:py-20 lg:py-24;
+}
+
+/* Hide on mobile, show on larger screens */
+.hidden-mobile {
+  @apply block sm:block md:hidden lg:hidden;
+}
+
+/* Specific responsive classes */
+@media (max-width: 767px) {
+  .mobile-layout {
+    @apply flex-col;
+  }
+  
+  .mobile-spacing {
+    @apply space-y-6;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tablet-layout {
+    @apply grid-cols-1 md:grid-cols-2;
+  }
+  
+  .tablet-spacing {
+    @apply space-y-4 space-x-4;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktop-layout {
+    @apply grid-cols-3;
+  }
+  
+  .desktop-spacing {
+    @apply space-y-0 space-x-8;
+  }
+}
+
+/* Animation helper classes */
+.animate-on-load {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover animations */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Focus styles for accessibility */
+.focus-outline {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

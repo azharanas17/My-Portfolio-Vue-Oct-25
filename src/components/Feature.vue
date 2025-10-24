@@ -1,47 +1,115 @@
+<script setup lang="ts">
+import { Card, CardContent } from '@/components/ui/card';
+import { Code, Palette, Smartphone, Globe, Database, Zap } from 'lucide-vue-next';
+
+interface FeatureItem {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+// Define props with default features
+const props = withDefaults(defineProps<{
+  title?: string;
+  subtitle?: string;
+  features?: FeatureItem[];
+}>(), {
+  title: "My Skills & Expertise",
+  subtitle: "Technologies and skills I specialize in",
+  features: () => [
+    {
+      icon: "Code",
+      title: "Frontend Development",
+      description: "Creating responsive, interactive UIs with Vue.js, React, TypeScript, and modern CSS frameworks."
+    },
+    {
+      icon: "Globe",
+      title: "Web Architecture",
+      description: "Building scalable web applications with clean architecture and best practices."
+    },
+    {
+      icon: "Database",
+      title: "Backend Development",
+      description: "API development and database design with Node.js, Python, and various databases."
+    },
+    {
+      icon: "Smartphone",
+      title: "Responsive Design",
+      description: "Mobile-first designs that work beautifully across all device sizes."
+    },
+    {
+      icon: "Palette", 
+      title: "UI/UX Design",
+      description: "Creating intuitive, user-friendly interfaces with focus on usability."
+    },
+    {
+      icon: "Zap",
+      title: "Performance",
+      description: "Optimizing applications for speed and efficiency with best practices."
+    }
+  ]
+});
+
+// Mapping of icon names to components
+const iconComponents = {
+  Code,
+  Palette,
+  Smartphone,
+  Globe,
+  Database,
+  Zap
+};
+</script>
+
 <template>
-<!-- Feature Sections -->
-  <div class="overflow-hidden bg-gray-900 py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-        <div class="lg:pr-8 lg:pt-4">
-          <div class="lg:max-w-lg">
-            <h2 class="text-base/7 font-semibold text-indigo-400">Deploy faster</h2>
-            <p class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl">A better workflow</p>
-            <p class="mt-6 text-lg/8 text-gray-300">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.</p>
-            <dl class="mt-10 max-w-xl space-y-8 text-base/7 text-gray-400 lg:max-w-none">
-              <div class="relative pl-9">
-                <dt class="inline font-semibold text-white">
-                  <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="absolute left-1 top-1 size-5 text-indigo-400">
-                    <path d="M5.5 17a4.5 4.5 0 0 1-1.44-8.765 4.5 4.5 0 0 1 8.302-3.046 3.5 3.5 0 0 1 4.504 4.272A4 4 0 0 1 15 17H5.5Zm3.75-2.75a.75.75 0 0 0 1.5 0V9.66l1.95 2.1a.75.75 0 1 0 1.1-1.02l-3.25-3.5a.75.75 0 0 0-1.1 0l-3.25 3.5a.75.75 0 1 0 1.1 1.02l1.95-2.1v4.59Z" clip-rule="evenodd" fill-rule="evenodd" />
-                  </svg>
-                  Push to deploy.
-                </dt>
-                <dd class="inline">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.</dd>
+  <section 
+    class="py-20 bg-white dark:bg-gray-900"
+    id="skills"
+    v-animate-on-scroll
+  >
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 animate__animated animate__fadeInDown">
+          {{ props.title }}
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto animate__animated animate__fadeInDown animate__delay-1s">
+          {{ props.subtitle }}
+        </p>
+      </div>
+      
+      <!-- Features Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div 
+          v-for="(feature, index) in props.features" 
+          :key="index"
+          v-animate-on-scroll="'animate__animated animate__fadeInUp'"
+        >
+          <Card class="h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-800/50 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 p-6">
+            <CardContent class="p-6">
+              <div class="flex flex-col items-center text-center">
+                <!-- Icon -->
+                <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-6">
+                  <component
+                    :is="iconComponents[feature.icon as keyof typeof iconComponents]"
+                    class="w-8 h-8 text-blue-600 dark:text-blue-400"
+                  />
+                </div>
+                
+                <!-- Title -->
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  {{ feature.title }}
+                </h3>
+                
+                <!-- Description -->
+                <p class="text-gray-600 dark:text-gray-300">
+                  {{ feature.description }}
+                </p>
               </div>
-              <div class="relative pl-9">
-                <dt class="inline font-semibold text-white">
-                  <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="absolute left-1 top-1 size-5 text-indigo-400">
-                    <path d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd" fill-rule="evenodd" />
-                  </svg>
-                  SSL certificates.
-                </dt>
-                <dd class="inline">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.</dd>
-              </div>
-              <div class="relative pl-9">
-                <dt class="inline font-semibold text-white">
-                  <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="absolute left-1 top-1 size-5 text-indigo-400">
-                    <path d="M4.632 3.533A2 2 0 0 1 6.577 2h6.846a2 2 0 0 1 1.945 1.533l1.976 8.234A3.489 3.489 0 0 0 16 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234Z" />
-                    <path d="M4 13a2 2 0 1 0 0 4h12a2 2 0 1 0 0-4H4Zm11.24 2a.75.75 0 0 1 .75-.75H16a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75V15Zm-2.25-.75a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 0 0 .75-.75V15a.75.75 0 0 0-.75-.75h-.01Z" clip-rule="evenodd" fill-rule="evenodd" />
-                  </svg>
-                  Database backups.
-                </dt>
-                <dd class="inline">Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.</dd>
-              </div>
-            </dl>
-          </div>
+            </CardContent>
+          </Card>
         </div>
-        <img width="2432" height="1442" src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png" alt="Product screenshot" class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-white/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" />
       </div>
     </div>
-  </div>
+  </section>
 </template>

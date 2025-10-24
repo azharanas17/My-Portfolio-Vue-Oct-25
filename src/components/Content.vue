@@ -1,63 +1,120 @@
+<script setup lang="ts">
+import ProjectCard from './ProjectCard.vue';
+
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+  liveUrl?: string;
+  sourceUrl?: string;
+  tags: string[];
+}
+
+// Define props with default projects
+const props = withDefaults(defineProps<{
+  title?: string;
+  subtitle?: string;
+  projects?: Project[];
+}>(), {
+  title: "My Projects",
+  subtitle: "Some of the projects I've worked on",
+  projects: () => [
+    {
+      id: 'project1',
+      title: 'E-Commerce Platform',
+      description: 'A full-featured e-commerce solution with payment processing and inventory management.',
+      thumbnail: 'https://placehold.co/600x400/3b82f6/white?text=E-Commerce+Platform',
+      liveUrl: 'https://example.com',
+      sourceUrl: 'https://github.com/username/project',
+      tags: ['Vue.js', 'Node.js', 'MongoDB']
+    },
+    {
+      id: 'project2',
+      title: 'Task Management App',
+      description: 'A productivity application for managing tasks and projects with team collaboration features.',
+      thumbnail: 'https://placehold.co/600x400/10b981/white?text=Task+Manager',
+      liveUrl: 'https://example.com',
+      sourceUrl: 'https://github.com/username/project',
+      tags: ['React', 'Firebase', 'Tailwind']
+    },
+    {
+      id: 'project3',
+      title: 'Weather Dashboard',
+      description: 'A responsive weather application with location-based forecasts and historical data.',
+      thumbnail: 'https://placehold.co/600x400/8b5cf6/white?text=Weather+Dashboard',
+      liveUrl: 'https://example.com',
+      sourceUrl: 'https://github.com/username/project',
+      tags: ['JavaScript', 'API', 'CSS']
+    },
+    {
+      id: 'project4',
+      title: 'Fitness Tracker',
+      description: 'Mobile-first application for tracking workouts and nutrition with progress analytics.',
+      thumbnail: 'https://placehold.co/600x400/ef4444/white?text=Fitness+Tracker',
+      liveUrl: 'https://example.com',
+      sourceUrl: 'https://github.com/username/project',
+      tags: ['React Native', 'Redux', 'Express']
+    },
+    {
+      id: 'project5',
+      title: 'Blog Platform',
+      description: 'Content management system for bloggers with rich text editing and SEO optimization.',
+      thumbnail: 'https://placehold.co/600x400/f97316/white?text=Blog+Platform',
+      liveUrl: 'https://example.com',
+      sourceUrl: 'https://github.com/username/project',
+      tags: ['Vue.js', 'Nuxt', 'Strapi']
+    },
+    {
+      id: 'project6',
+      title: 'Finance Dashboard',
+      description: 'Personal finance tracking application with expense categorization and reporting.',
+      thumbnail: 'https://placehold.co/600x400/06b6d4/white?text=Finance+Dashboard',
+      liveUrl: 'https://example.com',
+      sourceUrl: 'https://github.com/username/project',
+      tags: ['Angular', 'D3.js', 'Spring Boot']
+    }
+  ]
+});
+
+// Handle project card clicks
+const onLiveClick = (projectId: string) => {
+  console.log(`Live demo clicked for project: ${projectId}`);
+};
+
+const onSourceClick = (projectId: string) => {
+  console.log(`Source code clicked for project: ${projectId}`);
+};
+</script>
+
 <template>
-  <!-- Content Sections -->
-  <div class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
-    <div class="absolute inset-0 -z-10 overflow-hidden">
-      <svg aria-hidden="true" class="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-800 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
-        <defs>
-          <pattern id="e813992c-7d03-4cc4-a2bd-151760b470a0" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
-            <path d="M100 200V.5M.5 .5H200" fill="none" />
-          </pattern>
-        </defs>
-        <svg x="50%" y="-1" class="overflow-visible fill-gray-800/50">
-          <path d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z" stroke-width="0" />
-        </svg>
-        <rect width="100%" height="100%" fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)" stroke-width="0" />
-      </svg>
-    </div>
-    <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
-      <div class="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-        <div class="lg:pr-4">
-          <div class="lg:max-w-lg">
-            <p class="text-base/7 font-semibold text-indigo-400">Deploy faster</p>
-            <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl">A better workflow</h1>
-            <p class="mt-6 text-xl/8 text-gray-300">Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas.</p>
-          </div>
-        </div>
+  <section 
+    class="py-20 bg-gray-50 dark:bg-gray-900/50"
+    id="projects"
+    v-animate-on-scroll
+  >
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 animate__animated animate__fadeInDown">
+          {{ props.title }}
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto animate__animated animate__fadeInDown animate__delay-1s">
+          {{ props.subtitle }}
+        </p>
       </div>
-      <div class="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-        <img src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png" alt="" class="w-[48rem] max-w-none rounded-xl bg-gray-800 shadow-xl ring-1 ring-white/10 sm:w-[57rem]" />
-      </div>
-      <div class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-        <div class="lg:pr-4">
-          <div class="max-w-xl text-base/7 text-gray-400 lg:max-w-lg">
-            <p>Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque erat velit. Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id.</p>
-            <ul role="list" class="mt-8 space-y-8 text-gray-400">
-              <li class="flex gap-x-3">
-                <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="mt-1 size-5 flex-none text-indigo-400">
-                  <path d="M5.5 17a4.5 4.5 0 0 1-1.44-8.765 4.5 4.5 0 0 1 8.302-3.046 3.5 3.5 0 0 1 4.504 4.272A4 4 0 0 1 15 17H5.5Zm3.75-2.75a.75.75 0 0 0 1.5 0V9.66l1.95 2.1a.75.75 0 1 0 1.1-1.02l-3.25-3.5a.75.75 0 0 0-1.1 0l-3.25 3.5a.75.75 0 1 0 1.1 1.02l1.95-2.1v4.59Z" clip-rule="evenodd" fill-rule="evenodd" />
-                </svg>
-                <span><strong class="font-semibold text-white">Push to deploy.</strong> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.</span>
-              </li>
-              <li class="flex gap-x-3">
-                <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="mt-1 size-5 flex-none text-indigo-400">
-                  <path d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd" fill-rule="evenodd" />
-                </svg>
-                <span><strong class="font-semibold text-white">SSL certificates.</strong> Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.</span>
-              </li>
-              <li class="flex gap-x-3">
-                <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="mt-1 size-5 flex-none text-indigo-400">
-                  <path d="M4.632 3.533A2 2 0 0 1 6.577 2h6.846a2 2 0 0 1 1.945 1.533l1.976 8.234A3.489 3.489 0 0 0 16 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234Z" />
-                  <path d="M4 13a2 2 0 1 0 0 4h12a2 2 0 1 0 0-4H4Zm11.24 2a.75.75 0 0 1 .75-.75H16a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75V15Zm-2.25-.75a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 0 0 .75-.75V15a.75.75 0 0 0-.75-.75h-.01Z" clip-rule="evenodd" fill-rule="evenodd" />
-                </svg>
-                <span><strong class="font-semibold text-white">Database backups.</strong> Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.</span>
-              </li>
-            </ul>
-            <p class="mt-8">Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis odio id et. Id blandit molestie auctor fermentum dignissim. Lacus diam tincidunt ac cursus in vel. Mauris varius vulputate et ultrices hac adipiscing egestas. Iaculis convallis ac tempor et ut. Ac lorem vel integer orci.</p>
-            <h2 class="mt-16 text-2xl font-bold tracking-tight text-white">No server? No problem.</h2>
-            <p class="mt-6">Id orci tellus laoreet id ac. Dolor, aenean leo, ac etiam consequat in. Convallis arcu ipsum urna nibh. Pharetra, euismod vitae interdum mauris enim, consequat vulputate nibh. Maecenas pellentesque id sed tellus mauris, ultrices mauris. Tincidunt enim cursus ridiculus mi. Pellentesque nam sed nullam sed diam turpis ipsum eu a sed convallis diam.</p>
-          </div>
-        </div>
+      
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <ProjectCard 
+          v-for="project in props.projects" 
+          :key="project.id" 
+          :project="project"
+          @live-click="onLiveClick"
+          @source-click="onSourceClick"
+          v-animate-on-scroll="'animate__animated animate__fadeInUp'"
+        />
       </div>
     </div>
-  </div>
+  </section>
 </template>
