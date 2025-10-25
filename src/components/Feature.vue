@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Card, CardContent } from '@/components/ui/card';
-import { Code, Palette, Smartphone, Globe, Database, Zap } from 'lucide-vue-next';
+import { Code, Globe, Database } from 'lucide-vue-next';
 
 interface FeatureItem {
   icon: string;
@@ -33,17 +33,17 @@ const props = withDefaults(defineProps<{
       description: "API development and database design with Node.js, Python, and various databases."
     },
     {
-      icon: "",
+      icon: "Database",
       title: "Data Science",
       description: "Analyzing data and building predictive models with Python and machine learning libraries."
     },
     {
-      icon: "", 
+      icon: "Globe", 
       title: "Team Collaboration",
       description: "Working effectively with cross-functional teams to deliver high-quality products."
     },
     {
-      icon: "",
+      icon: "Code",
       title: "Leadership",
       description: "Guiding teams to achieve project goals and fostering a collaborative environment."
     }
@@ -55,9 +55,6 @@ const iconComponents = {
   Code,
   Globe,
   Database,
-  Palette,
-  Smartphone,
-  Zap,
 };
 </script>
 

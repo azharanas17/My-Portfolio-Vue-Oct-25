@@ -22,12 +22,20 @@ const props = withDefaults(defineProps<HeroContent>(), {
 </script>
 
 <template>
-  <section 
-    class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-20"
+  <section
+    class="relative min-h-screen flex items-center justify-center py-20 hero-section"
     v-animate-on-scroll
   >
-    <div class="absolute inset-0 bg-grid dark:bg-grid-dark opacity-5"></div>
-    
+    <!-- animated gradient background -->
+    <div class="absolute inset-0 hero-gradient" aria-hidden="true"></div>
+
+    <!-- decorative blobs -->
+    <div class="absolute -top-24 -left-24 blob blob-1" aria-hidden="true"></div>
+    <div class="absolute top-8 -right-28 blob blob-2" aria-hidden="true"></div>
+    <div class="absolute -bottom-24 left-1/2 transform -translate-x-1/2 blob blob-3" aria-hidden="true"></div>
+
+    <div class="absolute inset-0 bg-grid dark:bg-grid-dark opacity-6" aria-hidden="true"></div>
+
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="flex flex-col md:flex-row items-center">
         <!-- Text Content -->
@@ -78,7 +86,7 @@ const props = withDefaults(defineProps<HeroContent>(), {
         <!-- Visual Element -->
         <div class="md:w-1/2 flex justify-center animate__animated animate__fadeInRight animate__delay-1s">
           <div class="relative">
-            <div class="w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full flex items-center justify-center shadow-xl overflow-hidden">
+            <div class="w-80 h-80 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem] bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full flex items-center justify-center shadow-xl overflow-hidden">
               <ImageWithPlaceholder 
                 src="/profile-image.png" 
                 alt="Profile"
@@ -112,5 +120,51 @@ const props = withDefaults(defineProps<HeroContent>(), {
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+}
+
+/* Hero animated gradient and decorative blobs */
+.hero-section {
+  /* ensure the section clips overflowing blobs on small screens */
+  overflow: hidden;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(120deg, rgba(14,165,233,0.12) 0%, rgba(124,58,237,0.12) 40%, rgba(236,72,153,0.12) 100%);
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite;
+  mix-blend-mode: normal;
+}
+
+.blob {
+  width: 18rem;
+  height: 18rem;
+  border-radius: 9999px;
+  filter: blur(48px);
+  opacity: 0.85;
+  transform-origin: center;
+}
+.blob-1 { background: radial-gradient(circle at 30% 30%, rgba(99,102,241,0.9), transparent 30%), radial-gradient(circle at 70% 70%, rgba(79,70,229,0.6), transparent 30%); animation: float 12s ease-in-out infinite; }
+.blob-2 { width: 22rem; height: 22rem; background: radial-gradient(circle at 30% 30%, rgba(236,72,153,0.9), transparent 30%), radial-gradient(circle at 70% 70%, rgba(249,115,22,0.6), transparent 30%); animation: float 14s ease-in-out infinite; animation-delay: 2s; }
+.blob-3 { width: 16rem; height: 16rem; background: radial-gradient(circle at 30% 30%, rgba(56,189,248,0.85), transparent 30%), radial-gradient(circle at 70% 70%, rgba(168,85,247,0.5), transparent 30%); animation: float 16s ease-in-out infinite; animation-delay: 4s; }
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-24px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient,
+  .blob { animation: none !important; }
 }
 </style>

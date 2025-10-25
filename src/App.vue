@@ -17,7 +17,13 @@ const { currentSection } = useScrollSpy(sectionIds);
   <Navigation :current-section="currentSection" />
 
   <section id="hero">
-    <Hero></Hero>
+    <Hero 
+      title="Hi, I'm Anas Azhar"
+      subtitle="Full Stack Developer & Data Enthusiast"
+      description="I am a fresh graduate of Informatics Engineering from Institut Teknologi Sepuluh Nopember, focusing on Website Development and Data Science. My technical expertise includes Laravel, React, Vue and TanStack."
+      ctaText="Get In Touch"
+      ctaLink="#contact"
+    ></Hero>
   </section>
   
   <section id="skills">
