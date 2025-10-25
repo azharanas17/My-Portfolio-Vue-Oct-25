@@ -22,57 +22,57 @@ const props = withDefaults(defineProps<{
   projects: () => [
     {
       id: 'project1',
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce solution with payment processing and inventory management.',
-      thumbnail: 'https://placehold.co/600x400/3b82f6/white?text=E-Commerce+Platform',
-      liveUrl: 'https://example.com',
-      sourceUrl: 'https://github.com/username/project',
-      tags: ['Vue.js', 'Node.js', 'MongoDB']
+      title: 'My ITS Mentoring Agama Islam Application',
+      description: 'A full-featured mentoring application with user management and scheduling features.',
+      thumbnail: '/project1.png',
+      liveUrl: 'mentoring.its.ac.id',
+      sourceUrl: 'https://github.com/azharanas17/mentoring-its',
+      tags: ['Laravel', 'SQLServer', 'Tailwind']
     },
     {
       id: 'project2',
-      title: 'Task Management App',
-      description: 'A productivity application for managing tasks and projects with team collaboration features.',
-      thumbnail: 'https://placehold.co/600x400/10b981/white?text=Task+Manager',
-      liveUrl: 'https://example.com',
-      sourceUrl: 'https://github.com/username/project',
-      tags: ['React', 'Firebase', 'Tailwind']
+      title: 'My ITS K3L assesment Application',
+      description: 'A productivity application for handling tasks and assessments efficiently.',
+      thumbnail: '/project2.png',
+      liveUrl: 'halok3.its.ac.id',
+      sourceUrl: 'https://github.com/azharanas17/k3l-its',
+      tags: ['Laravel', 'Vue', 'SQLServer', 'Tailwind']
     },
     {
       id: 'project3',
-      title: 'Weather Dashboard',
-      description: 'A responsive weather application with location-based forecasts and historical data.',
-      thumbnail: 'https://placehold.co/600x400/8b5cf6/white?text=Weather+Dashboard',
-      liveUrl: 'https://example.com',
-      sourceUrl: 'https://github.com/username/project',
-      tags: ['JavaScript', 'API', 'CSS']
+      title: 'Scholarship Data Management',
+      description: 'A comprehensive application for managing scholarship data and applications.',
+      thumbnail: '/project3.png',
+      liveUrl: 'beasiswa-pwnujatim.or.id',
+      sourceUrl: 'https://github.com/Tekno-Tren/pwnu-beasiswa-ppsdm',
+      tags: ['Laravel', 'Filament', 'MySQL']
     },
     {
       id: 'project4',
-      title: 'Fitness Tracker',
-      description: 'Mobile-first application for tracking workouts and nutrition with progress analytics.',
-      thumbnail: 'https://placehold.co/600x400/ef4444/white?text=Fitness+Tracker',
-      liveUrl: 'https://example.com',
-      sourceUrl: 'https://github.com/username/project',
-      tags: ['React Native', 'Redux', 'Express']
+      title: 'UniTrack App',
+      description: 'A mobile application designed as a personal academic assistant for students.',
+      thumbnail: '/project4.png',
+      liveUrl: '#',
+      sourceUrl: 'https://github.com/fairuuz16/unitrack',
+      tags: ['Kotlin', 'Jetpack Compose', 'Firebase']
     },
     {
       id: 'project5',
-      title: 'Blog Platform',
-      description: 'Content management system for bloggers with rich text editing and SEO optimization.',
-      thumbnail: 'https://placehold.co/600x400/f97316/white?text=Blog+Platform',
-      liveUrl: 'https://example.com',
-      sourceUrl: 'https://github.com/username/project',
-      tags: ['Vue.js', 'Nuxt', 'Strapi']
+      title: 'Image Captioning using BLIP method',
+      description: 'An AI model that generates captions for images using deep learning techniques.',
+      thumbnail: '/project5.png',
+      liveUrl: '#',
+      sourceUrl: 'https://www.kaggle.com/code/azharanas17/imagecaptioning-ta-blip-6c',
+      tags: ['PyTorch', 'BLIP', 'Python']
     },
     {
       id: 'project6',
-      title: 'Finance Dashboard',
-      description: 'Personal finance tracking application with expense categorization and reporting.',
-      thumbnail: 'https://placehold.co/600x400/06b6d4/white?text=Finance+Dashboard',
+      title: 'Industrial Monitoring (Ongoing)',
+      description: 'A comprehensive application for monitoring industrial processes and equipment.',
+      thumbnail: '/project6.png',
       liveUrl: 'https://example.com',
-      sourceUrl: 'https://github.com/username/project',
-      tags: ['Angular', 'D3.js', 'Spring Boot']
+      sourceUrl: 'https://github.com/Tekno-Tren/industrial-monitoring',
+      tags: ['TanStack', 'React', 'PostgreSQL']
     }
   ]
 });

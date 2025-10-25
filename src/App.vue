@@ -3,14 +3,8 @@ import { useScrollSpy } from './composables/useScrollSpy';
 import Navigation from './components/Navigation.vue';
 import Hero from './components/Hero.vue';
 import Feature from './components/Feature.vue';
-import CTA from './components/CTA.vue';
 import Content from './components/Content.vue';
-import Team from './components/Team.vue';
-import Logo from './components/Logo.vue';
 import Contact from './components/Contact.vue';
-
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 import 'animate.css'
 

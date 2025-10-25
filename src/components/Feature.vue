@@ -24,8 +24,8 @@ const props = withDefaults(defineProps<{
     },
     {
       icon: "Globe",
-      title: "Web Architecture",
-      description: "Building scalable web applications with clean architecture and best practices."
+      title: "Full Stack Development",
+      description: "Building complete web applications with both frontend and backend technologies."
     },
     {
       icon: "Database",
@@ -33,19 +33,19 @@ const props = withDefaults(defineProps<{
       description: "API development and database design with Node.js, Python, and various databases."
     },
     {
-      icon: "Smartphone",
-      title: "Responsive Design",
-      description: "Mobile-first designs that work beautifully across all device sizes."
+      icon: "",
+      title: "Data Science",
+      description: "Analyzing data and building predictive models with Python and machine learning libraries."
     },
     {
-      icon: "Palette", 
-      title: "UI/UX Design",
-      description: "Creating intuitive, user-friendly interfaces with focus on usability."
+      icon: "", 
+      title: "Team Collaboration",
+      description: "Working effectively with cross-functional teams to deliver high-quality products."
     },
     {
-      icon: "Zap",
-      title: "Performance",
-      description: "Optimizing applications for speed and efficiency with best practices."
+      icon: "",
+      title: "Leadership",
+      description: "Guiding teams to achieve project goals and fostering a collaborative environment."
     }
   ]
 });
@@ -53,11 +53,11 @@ const props = withDefaults(defineProps<{
 // Mapping of icon names to components
 const iconComponents = {
   Code,
-  Palette,
-  Smartphone,
   Globe,
   Database,
-  Zap
+  Palette,
+  Smartphone,
+  Zap,
 };
 </script>
 

@@ -84,7 +84,7 @@ const isActive = (href: string) => {
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
-          <span class="text-xl font-bold text-gray-900 dark:text-white">Portfolio</span>
+          <span class="text-xl font-bold text-gray-900 dark:text-white">azharanas17</span>
         </div>
 
         <!-- Desktop Navigation -->

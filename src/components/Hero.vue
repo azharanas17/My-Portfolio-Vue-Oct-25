@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button';
 import ImageWithPlaceholder from '@/components/ImageWithPlaceholder.vue';
-import { Github, Mail } from 'lucide-vue-next';
+import { Github, Linkedin, Mail } from 'lucide-vue-next';
 
 interface HeroContent {
   title: string;
@@ -13,9 +13,9 @@ interface HeroContent {
 
 // Define props
 const props = withDefaults(defineProps<HeroContent>(), {
-  title: "Hi, I'm a Developer",
-  subtitle: "Full Stack Developer & UI Designer",
-  description: "I create beautiful, responsive websites and applications with modern technologies. With expertise in Vue.js, TypeScript, and Tailwind CSS, I bring ideas to life.",
+  title: "Hi, I'm Anas Azhar",
+  subtitle: "Full Stack Developer & Data Enthusiast",
+  description: "I am a fresh graduate of Informatics Engineering from Institut Teknologi Sepuluh Nopember, focusing on Website Development and Data Science. My technical expertise includes Laravel, React, Vue and TanStack.",
   ctaText: "Get In Touch",
   ctaLink: "#contact",
 });
@@ -55,7 +55,7 @@ const props = withDefaults(defineProps<HeroContent>(), {
             
             <Button 
               as="a" 
-              href="https://github.com/username" 
+              href="https://github.com/azharanas17" 
               target="_blank"
               variant="outline"
               class="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
@@ -66,10 +66,10 @@ const props = withDefaults(defineProps<HeroContent>(), {
           </div>
           
           <div class="mt-12 flex justify-center md:justify-start space-x-6 animate__animated animate__fadeInUp animate__delay-4s">
-            <a href="https://github.com/username" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              <Github class="w-8 h-8" />
+            <a href="https://www.linkedin.com/in/anas-azhar/" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+              <Linkedin class="w-8 h-8" />
             </a>
-            <a href="mailto:email@example.com" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <a href="mailto:azharaan173@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
               <Mail class="w-8 h-8" />
             </a>
           </div>
@@ -80,7 +80,7 @@ const props = withDefaults(defineProps<HeroContent>(), {
           <div class="relative">
             <div class="w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full flex items-center justify-center shadow-xl overflow-hidden">
               <ImageWithPlaceholder 
-                src="https://placehold.co/320/3b82f6/white?text=Profile+Image" 
+                src="/profile-image.png" 
                 alt="Profile"
                 class="w-full h-full object-cover"
               />
