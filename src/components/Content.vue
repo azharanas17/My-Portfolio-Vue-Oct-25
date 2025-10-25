@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<{
       title: 'My ITS Mentoring Agama Islam Application',
       description: 'A full-featured mentoring application with user management and scheduling features.',
       thumbnail: '/project1.png',
-      liveUrl: 'mentoring.its.ac.id',
+      liveUrl: 'https://mentoring.its.ac.id',
       sourceUrl: 'https://github.com/azharanas17/mentoring-its',
       tags: ['Laravel', 'SQLServer', 'Tailwind']
     },
@@ -34,7 +34,7 @@ const props = withDefaults(defineProps<{
       title: 'My ITS K3L assesment Application',
       description: 'A productivity application for handling tasks and assessments efficiently.',
       thumbnail: '/project2.png',
-      liveUrl: 'halok3.its.ac.id',
+      liveUrl: 'https://halok3.its.ac.id',
       sourceUrl: 'https://github.com/azharanas17/k3l-its',
       tags: ['Laravel', 'Vue', 'SQLServer', 'Tailwind']
     },
@@ -43,7 +43,7 @@ const props = withDefaults(defineProps<{
       title: 'Scholarship Data Management',
       description: 'A comprehensive application for managing scholarship data and applications.',
       thumbnail: '/project3.png',
-      liveUrl: 'beasiswa-pwnujatim.or.id',
+      liveUrl: 'https://beasiswa-pwnujatim.or.id',
       sourceUrl: 'https://github.com/Tekno-Tren/pwnu-beasiswa-ppsdm',
       tags: ['Laravel', 'Filament', 'MySQL']
     },
